@@ -1,4 +1,5 @@
 import type Shape from "@giro3d/giro3d/entities/Shape";
+import type { MeasurementOptions } from "../types/measurementsOptions";
 
 
 interface UnitControlsProps {
@@ -7,10 +8,9 @@ interface UnitControlsProps {
         areaUnit: 'm' | 'ha' | 'acre';
         slopeUnit: 'deg' | 'pct';
     };
-    onOptionsChange: (key: string, value: any) => void;
+    onOptionsChange: <K extends keyof MeasurementOptions>(key: K, value: MeasurementOptions[K]) => void;
     shapes: Shape[];
 }
-
 
 const UnitControls = ({ options, onOptionsChange, shapes }: UnitControlsProps) => {
     return (

@@ -15,13 +15,13 @@ interface DrawButtonsProps {
     };
 }
 
-const DrawButtons = ({ 
-    isDrawing, 
-    isEditMode, 
-    activeButton, 
-    onDraw, 
+const DrawButtons = ({
+    isDrawing,
+    isEditMode,
+    activeButton,
+    onDraw,
     toolRef,
-    formatters 
+    formatters
 }: DrawButtonsProps) => {
     const { vertexLabelFormatter, lengthFormatter, surfaceLabelFormatter, verticalLineLabelFormatter, slopeFormatter } = formatters;
 

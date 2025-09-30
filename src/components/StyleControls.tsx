@@ -1,13 +1,15 @@
 import type Shape from "@giro3d/giro3d/entities/Shape";
+import type { MeasurementOptions } from "../types/measurementsOptions";
 
 interface StyleControlsProps {
     options: {
         lineWidth: number;
         color: string;
     };
-    onOptionsChange: (key: string, value: any) => void;
+    onOptionsChange: <K extends keyof MeasurementOptions>(key: K, value: MeasurementOptions[K]) => void;
     shapes: Shape[];
 }
+
 
 const StyleControls = ({ options, onOptionsChange, shapes }: StyleControlsProps) => {
     return (

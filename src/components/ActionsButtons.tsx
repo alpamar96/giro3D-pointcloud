@@ -11,15 +11,14 @@ interface ActionButtonsProps {
 }
 
 
-
-const ActionButtons = ({ 
-    shapes, 
-    isEditMode, 
-    isDrawing, 
-    onStartEdit, 
-    onExitEdit, 
-    onExport, 
-    onRemoveAll 
+const ActionButtons = ({
+    shapes,
+    isEditMode,
+    isDrawing,
+    onStartEdit,
+    onExitEdit,
+    onExport,
+    onRemoveAll
 }: ActionButtonsProps) => {
     return (
         <div>
