@@ -52,7 +52,7 @@ function App() {
       }
     }
 
-    load('/dam_gate.las').catch(console.error);
+    load('../src/assets/dam_gate.las').catch(console.error);
 
     // Inspector
     // Inspector.attach(inspectorRef.current, instance);

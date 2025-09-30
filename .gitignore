@@ -27,3 +27,5 @@ dist-ssr
 *.las
 ./public/*.las
 public/*.laS
+
+src/assets/*
