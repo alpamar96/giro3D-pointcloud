@@ -7,16 +7,29 @@ import type Shape from "@giro3d/giro3d/entities/Shape";
 export function useDrawTool(
   instance: Instance,
   options: MeasurementOptions,
+  shapes : Shape [],
   addShape: (s: Shape) => void
 ) {
   const toolRef = useRef<DrawTool | null>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
   const editedShapeRef = useRef<Shape | null>(null); // ← useRef en lugar de useState
-  const shapesRef = useRef<Shape[]>([]); // ← También shapes como ref
+  const shapesRef = useRef<Shape[]>(shapes); // ← También shapes como ref
 
   const [isDrawing, setIsDrawing] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
 
+  // Nota: 
+    // shapes siempre será el valor actual porque:
+
+    // Cada vez que shapes cambia en useShapes, el componente se re-renderiza
+    // En cada re-render, obtienes el nuevo valor de shapes
+    // Ese nuevo valor se pasa a useDrawTool
+    // useDrawTool recibe el valor actualizado en cada render
+
+  // Sincronizar shapesRef con shapes
+   useEffect(() => {
+    shapesRef.current = shapes;
+  }, [shapes]);
   /**
    * Crear nueva Shape
    */
@@ -40,7 +53,6 @@ export function useDrawTool(
 
         if (shape) {
           addShape(shape);
-          shapesRef.current = [...shapesRef.current, shape];
         }
       } finally {
         setIsDrawing(false);
@@ -66,7 +78,8 @@ export function useDrawTool(
 
     // Reactivar controles de cámara
     if (instance.view.controls) {
-      instance.view.controls.enabled = true;
+      //@ts-expect-error Ignore missing types
+        instance.view.controls.enabled = true;
     }
   }, [instance, options.color]);
 
@@ -99,6 +112,7 @@ export function useDrawTool(
 
         // Desactivar controles de cámara
         if (instance.view.controls) {
+          //@ts-expect-error Ignore missing types
           instance.view.controls.enabled = false;
         }
 
@@ -141,6 +155,8 @@ export function useDrawTool(
     instance.domElement.addEventListener("click", clickHandlerRef);
     instance.domElement.addEventListener("contextmenu", rightClickHandlerRef);
   }, [instance, exitEditMode]);
+
+
 
   /**
    * Inicialización del DrawTool

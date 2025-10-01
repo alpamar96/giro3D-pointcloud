@@ -27,9 +27,9 @@ const MeasurementPanel = ({ instance }: MeasurementPanelProps) => {
     surfaceOpacity: DEFAULT_SURFACE_OPACITY,
   });
 
-  const { shapes, addShape, removeAllShapes, exportShapes } = useShapes(instance);
-  const { toolRef, createShape, exitEditMode, isDrawing, isEditMode, startEditMode } = useDrawTool(instance, options, addShape);
   const formatters = useShapeFormatters(instance, options);
+  const { shapes, addShape, removeAllShapes, exportShapes } = useShapes(instance);
+  const { toolRef, createShape, exitEditMode, isDrawing, isEditMode, startEditMode } = useDrawTool(instance, options, shapes, addShape);
 
   const handleOptionsChange = useCallback(<K extends keyof MeasurementOptions>(key: K, value: MeasurementOptions[K]) => {
     setOptions(prev => ({ ...prev, [key]: value }));
