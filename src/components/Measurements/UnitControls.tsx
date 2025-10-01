@@ -1,5 +1,5 @@
 import type Shape from "@giro3d/giro3d/entities/Shape";
-import type { MeasurementOptions } from "../types/measurementsOptions";
+import type { MeasurementOptions } from "../../types/measurementsOptions";
 
 
 interface UnitControlsProps {

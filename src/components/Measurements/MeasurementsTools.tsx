@@ -1,14 +1,14 @@
 import Instance from '@giro3d/giro3d/core/Instance';
 import { DEFAULT_SURFACE_OPACITY } from '@giro3d/giro3d/entities/Shape';
 import { useCallback, useState } from 'react';
-import ActionButtons from './components/ActionsButtons';
-import DrawButtons from './components/DrawButtons';
-import StyleControls from './components/StyleControls';
-import UnitControls from './components/UnitControls';
-import { useDrawTool } from './hooks/useDrawTool';
-import { useShapeFormatters } from './hooks/useShapeFormatters';
-import { useShapes } from './hooks/useShapes';
-import type { MeasurementOptions } from './types/measurementsOptions';
+import ActionButtons from './ActionsButtons';
+import DrawButtons from './DrawButtons';
+import StyleControls from './StyleControls';
+import UnitControls from './UnitControls';
+import { useDrawTool } from '../../hooks/useDrawTool';
+import { useShapeFormatters } from '../../hooks/useShapeFormatters';
+import { useShapes } from '../../hooks/useShapes';
+import type { MeasurementOptions } from '../../types/measurementsOptions';
 
 interface MeasurementPanelProps {
   instance: Instance;
