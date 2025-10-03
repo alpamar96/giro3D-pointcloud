@@ -1,4 +1,3 @@
-import Instance from '@giro3d/giro3d/core/Instance';
 import { DEFAULT_SURFACE_OPACITY } from '@giro3d/giro3d/entities/Shape';
 import { useCallback, useState } from 'react';
 import ActionButtons from './ActionsButtons';
@@ -9,12 +8,13 @@ import { useDrawTool } from '../../hooks/useDrawTool';
 import { useShapeFormatters } from '../../hooks/useShapeFormatters';
 import { useShapes } from '../../hooks/useShapes';
 import type { MeasurementOptions } from '../../types/measurementsOptions';
+import { useGiro3DInstance } from '../../hooks/useGiro3DInstance';
 
-interface MeasurementPanelProps {
-  instance: Instance;
-}
-
-const MeasurementPanel = ({ instance }: MeasurementPanelProps) => {
+// ✅ Ya no necesita props!
+const MeasurementPanel = () => {
+  // ✅ Obtiene la instancia del Context
+  const instance = useGiro3DInstance();
+  
   const [options, setOptions] = useState<MeasurementOptions>({
     lineWidth: 2,
     borderWidth: 1,
